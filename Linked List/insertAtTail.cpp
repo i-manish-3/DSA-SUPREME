@@ -14,6 +14,23 @@ class node{
     }
 };
 
+void insertAtTail(node* &head, int d)
+{
+    if(head == NULL)
+    {
+        node* newNode = new node(d);
+        head = newNode;
+    }
+    else
+    {
+        // create a newNode
+
+        node* newNode = new node(d);
+        head->next = newNode;
+        head = newNode;
+    }
+}
+
 void print(node* &head)
 {
     node* temp = head;
@@ -25,17 +42,18 @@ void print(node* &head)
 }
 
 int main(){
-    node* head = new node(0);
-    node* x = head;
+    node* head = new node(1);
+    node* temp = head;
     for(int i = 0; i < 5; i++)
     {
         cout<<"Enter data "<<endl;
         int val;
         cin>>val;
-        node* newNode = new node(val);
-        head->next = newNode;
-        head = newNode;
+        insertAtTail(head,val);
     }
-    print(x);
+
+    print(temp->next);
+
+
     return 0;
 }
